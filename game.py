@@ -197,7 +197,17 @@ class Game(tk.Frame):
         self.add_new_tile()
         self.update_GUI()
         self.game_over()
+        
+        
+    # Check if any moves are possible
 
+    def horizontal_move_exists(self):
+        for i in range(4):
+            for j in range(3):
+                if self.matrix[i][j] == self.matrix[i][j + 1]:
+                    return True
+        return False        
+        
 
     def vertical_move_exists(self):
         for i in range(3):
