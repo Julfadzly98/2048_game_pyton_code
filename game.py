@@ -7,7 +7,7 @@ class Game(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self)
         self.grid()
-        self.master.title('2048')
+        self.master.title('game')
 
         self.main_grid = tk.Frame(
             self, bg=c.GRID_COLOR, bd=3, width=400, height=400)
