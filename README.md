@@ -5,4 +5,4 @@ pip install pygame
 
 To run :
 
-python 2048.py
+game.py
