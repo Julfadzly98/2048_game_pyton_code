@@ -79,8 +79,7 @@ def main(fromLoaded = False):
 
 
 
-#  functions
-#  This module helps in check that it is possible to move or not  
+ 
 
 def canMove():
     for i in range(0,BOARD_SIZE):
@@ -90,7 +89,7 @@ def canMove():
             elif (tileMatrix[i][j-1] == tileMatrix[i][j]) and tileMatrix[i][j-1] != 0:
                 return True
     return False
-    # This module moves 
+ 
 def moveTiles():
     for i in range(0,BOARD_SIZE):
         for j in range(0,BOARD_SIZE-1):
@@ -110,12 +109,12 @@ def mergeTiles():
         for k in range(0,BOARD_SIZE-1):
             if tileMatrix[i][k] == tileMatrix[i][k+1] and tileMatrix[i][k] != 0:
                 tileMatrix[i][k] = tileMatrix[i][k]*2
-                tileMatrix[i][k+1] = 0 # this was not intailized so the k value was going out the range value so by this we ever we merge the files it assigns the present value to zero and merge the number with the ahead value 
+                tileMatrix[i][k+1] = 0
                 TOTAL_POINTS += tileMatrix[i][k]
                 moveTiles()
 
 
-#  this module helps in getting an random tile 
+ 
 def placeRandomTile():
     c = 0
     for i in range(0,BOARD_SIZE):
@@ -133,10 +132,10 @@ def placeRandomTile():
 
 
 
-#  this is used to get floor value out of the given value to the module
+
 def floor(n):
     return int(n - (n % 1 ))  
-# This module is used to print the given matrix
+
 def printMatrix():
         SURFACE.fill(BLACK)
         global BOARD_SIZE
@@ -151,10 +150,10 @@ def printMatrix():
                 SURFACE.blit(label2,(10,20))
 
 
-# We can call this an checker module
+
 
 def checkIfCanGo():
-    for i in range(0,BOARD_SIZE ** 2): # This was having an error as that is 4 power of 2
+    for i in range(0,BOARD_SIZE ** 2): 
         if tileMatrix[floor(i/BOARD_SIZE)][i%BOARD_SIZE] == 0:
             return True
     
@@ -166,7 +165,7 @@ def checkIfCanGo():
                 return True
     return False
 
-# This module return an matrix rather than we can call it an list 
+
 def convertToLinearMatrix():
 
     mat = []
@@ -176,10 +175,10 @@ def convertToLinearMatrix():
     mat.append(TOTAL_POINTS)
     return mat
 
-#  this module is the main reason to make the covert linearn function 
+
 def addToUndo():
     undoMat.append(convertToLinearMatrix())   
-#  This module is used to mix up the matrix after a button/ move is done by the user
+
 def rotateMatrixClockwise():
     for i in range(0,int(BOARD_SIZE/2)):
         for k in range(i,BOARD_SIZE- i- 1):
@@ -193,7 +192,7 @@ def rotateMatrixClockwise():
             tileMatrix[k][BOARD_SIZE - 1 - i] = temp3
             tileMatrix[i][k] = temp4
 
-# when you dont have any place in the matrix or you are out of move then this module is called so it is in the else part of the main func
+
 def printGameOver():
     global TOTAL_POINTS
 
@@ -207,7 +206,7 @@ def printGameOver():
     SURFACE.blit(label2,(50,200))
     SURFACE.blit(label3,(50,300))
 
-# This module is tot reset
+
 
 def reset():
     global TOTAL_POINTS
@@ -218,7 +217,6 @@ def reset():
     tileMatrix = [[0 for i in range(0,BOARD_SIZE)] for j in range(0,BOARD_SIZE) ]
     main()
 
-#  this saves the state of moves
 def saveGameState():
     f = open("savedata","w")
 
@@ -228,7 +226,7 @@ def saveGameState():
     f.write(str(TOTAL_POINTS))
     f.close
 
-# this module is used to get the last move
+
 def undo():
     if len(undoMat) > 0:
         mat = undoMat.pop()
@@ -259,7 +257,7 @@ def loadGameState():
     main(True)
 
 
-# This help you find the which arrow is clicked by the user
+
 def isArrow(k):
     return (k == pygame.K_UP or k == pygame.K_DOWN or k == pygame.K_LEFT or k == pygame.K_RIGHT)
 
@@ -275,9 +273,7 @@ def getRotations(k):
 
 # calling the main
 main()
-#  Ohh i need to get ready for errors .....
 
 
-''' 
-This is the video for 2048 game so you can find the source code or the program down in the description 
-Bye for now , we will meet again ......'''
+
+
